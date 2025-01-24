@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        {% if error %}
+            <h1>{{ error }}</h1>
+        {% else %}
+            <h1>Weather in {{ weather['name'] }}</h1>
+            <p>Temperature: {{ weather['main']['temp'] }} °C</p>
+            <p>Condition: {{ weather['weather'][0]['description'] }}</p>
+            {% set icon_path = "static/img/" + weather['weather'][0]['icon'] %}
+            <img src="{{ url_for('static', filename='img/' + weather['weather'][0]['icon']) }}" alt="Weather Icon" class="weather-icon">
+        {% endif %}
+    </div>
+</body>
+</html>
